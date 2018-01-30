@@ -5,7 +5,7 @@ public class Survey {
 	private String surveyTitle;
 	private String surveyText;
 	private int id;
-	
+
 	public String getSurveyTitle() {
 		return surveyTitle;
 	}
@@ -29,6 +29,5 @@ public class Survey {
 	public void setId(int id) {
 		this.id = id;
 	}
-	
-	
+
 }
