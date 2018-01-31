@@ -8,7 +8,7 @@ public class Profile extends User {
 	private String name;
 	private Date geburtsdatum;
 	private String profilBildLink;
-	private String user_id;
+	private int user_id;
 
 	public int getId() {
 		return id;
@@ -42,11 +42,11 @@ public class Profile extends User {
 		this.profilBildLink = profilBildLink;
 	}
 
-	public String getUser_id() {
+	public int getUser_id() {
 		return user_id;
 	}
 
-	public void setUser_id(String user_id) {
+	public void setUser_id(int user_id) {
 		this.user_id = user_id;
 	}
 
