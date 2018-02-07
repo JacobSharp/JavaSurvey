@@ -9,17 +9,22 @@ public class LoginJPanel extends JDialog {
 	 * 
 	 */
 	private static final long serialVersionUID = 120428732984733599L;
-	private JTextArea text = new JTextArea("Bla Bla");
+	private JTextArea username = new JTextArea("Username");
+	private JPasswordField pass = new JPasswordField("Password");
 	private JButton login = new JButton("Login");
 	private JButton regist = new JButton("Registrieren");
+	private JPanel buttonPanel = new JPanel(new GridLayout(0, 2));
 
 	public LoginJPanel() {
 
 		setLayout(new BorderLayout());
-		add(text, BorderLayout.NORTH);
-		add(regist, BorderLayout.CENTER);
-		add(login, BorderLayout.SOUTH);
-		setSize(200, 100);
+		add(username, BorderLayout.NORTH);
+		add(pass, BorderLayout.CENTER);
+		
+		buttonPanel.add(login);
+		buttonPanel.add(regist);
+		add(buttonPanel, BorderLayout.SOUTH);
+		setSize(230, 100);
 
 	}
 
