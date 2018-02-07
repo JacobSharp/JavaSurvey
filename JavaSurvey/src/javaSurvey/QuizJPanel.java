@@ -3,7 +3,7 @@ package javaSurvey;
 import java.awt.*;
 import javax.swing.*;
 
-public class a2 extends JDialog {
+public class QuizJPanel extends JDialog {
 
 	/**
 	 * 
@@ -13,7 +13,7 @@ public class a2 extends JDialog {
 	private JButton ok = new JButton("OK");
 	private JTextArea text = new JTextArea("Beispiel Text");
 
-	public a2() {
+	public QuizJPanel() {
 
 		setLayout(new BorderLayout());
 		add(text, BorderLayout.NORTH);
@@ -25,7 +25,7 @@ public class a2 extends JDialog {
 
 	public static void main(String[] args) {
 
-		a2 launcher = new a2();
+		QuizJPanel launcher = new QuizJPanel();
 		launcher.setVisible(true);
 
 	}
