@@ -6,7 +6,15 @@ public class User {
 	private String username;
 	private String password;
 	private int spielpunkte;
-	private int lookAndFeel_id;
+	private int lookAndFeel;
+	
+	public int getLookAndFeel() {
+		return lookAndFeel;
+	}
+
+	public void setLookAndFeel(int lookAndFeel) {
+		this.lookAndFeel = lookAndFeel;
+	}
 
 	public int getId() {
 		return id;
@@ -39,13 +47,4 @@ public class User {
 	public void setSpielpunkte(int spielpunkte) {
 		this.spielpunkte = spielpunkte;
 	}
-
-	public int getLookAndFeel_id() {
-		return lookAndFeel_id;
-	}
-
-	public void setLookAndFeel_id(int lookAndFeel_id) {
-		this.lookAndFeel_id = lookAndFeel_id;
-	}
-
 }
