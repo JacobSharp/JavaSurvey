@@ -79,7 +79,7 @@ public class UserJDBCDao implements UserDao {
 					rs.close();
 				}
 			} catch (SQLException e) {
-				throw new RuntimeException("We are sorry. Technical error occurred. Please try again later.", e);
+				throw new RuntimeException("We are sorry. A technical error occurred. Please try again later.", e);
 			}
 		}
 		return user;
