@@ -28,5 +28,4 @@ public class JavaSurveyController {
 			return false;
 		}
 	}
-
 }
