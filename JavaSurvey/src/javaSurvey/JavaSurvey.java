@@ -1,33 +1,35 @@
 package javaSurvey;
 
-import java.awt.*;
-import javax.swing.*;
+import javax.swing.JFrame;
 
 public class JavaSurvey extends JFrame {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 420428732984733599L;
-	private JTextField user = new JTextField("Username");
-	private JPasswordField pass = new JPasswordField("Password");
-	private JButton login = new JButton("Login");
+
+	private static final long serialVersionUID = 1L;
 
 	public JavaSurvey() {
 
-		setLayout(new BorderLayout());
-		add(user, BorderLayout.NORTH);
-		add(pass, BorderLayout.CENTER);
-		add(login, BorderLayout.SOUTH);
-		setSize(200, 100);
+		
 
 	}
 
 	public static void main(String[] args) {
 
-		JavaSurvey launcher = new JavaSurvey();
-		launcher.setVisible(true);
+		LoginJPanel login = new LoginJPanel();
+		login.setVisible(true);
 
 	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+

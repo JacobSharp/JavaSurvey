@@ -48,6 +48,9 @@ public class LoginJPanel extends JDialog {
 			public void actionPerformed(ActionEvent e) {
 				boolean loginSuccess = JavaSurveyController.getController().verifyLogin(username.getText(), new String(pass.getPassword()));
 				System.out.println("login successful? " + loginSuccess);
+				if (loginSuccess == true) {
+					// Übersichtsfenster
+				}
 				
 			}
 		});
