@@ -1,5 +1,6 @@
-package javaSurvey;
+package controller;
 
+import javaSurvey.User;
 import persistance.UserDao;
 import persistance.UserJDBCDao;
 

@@ -6,6 +6,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
+import controller.JavaSurveyController;
+
 public class LoginJPanel extends JDialog {
 
 	/**
