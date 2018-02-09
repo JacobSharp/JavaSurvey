@@ -1,5 +1,8 @@
 package javaSurvey;
 
+import persistance.UserDao;
+import persistance.UserJDBCDao;
+
 public class JavaSurveyController {
 
 	// singleton
