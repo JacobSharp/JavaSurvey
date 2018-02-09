@@ -3,7 +3,7 @@ package view;
 import java.awt.*;
 import javax.swing.*;
 
-public class QuizView extends JPanel {
+public class QuizView extends JDialog {
 
 	/**
 	 * 
