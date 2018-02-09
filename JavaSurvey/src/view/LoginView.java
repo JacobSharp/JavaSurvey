@@ -20,7 +20,12 @@ public class LoginView extends JDialog {
 	private JButton login = new JButton("Login");
 	private JButton regist = new JButton("Registrieren");
 	private JPanel buttonPanel = new JPanel(new GridLayout(0, 2));
+	public boolean loginSuccess = false;
 
+	public void setLoginSuccess(boolean i) {
+		this.loginSuccess = i;
+	}
+	
 	public LoginView() {
 
 		setLayout(new BorderLayout());
@@ -49,7 +54,8 @@ public class LoginView extends JDialog {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				boolean loginSuccess = JavaSurveyController.getController().verifyLogin(username.getText(), new String(pass.getPassword()));
+				boolean loginSuccessful = JavaSurveyController.getController().verifyLogin(username.getText(), new String(pass.getPassword()));
+				setLoginSuccess(loginSuccessful);
 				System.out.println("login successful? " + loginSuccess);
 				if (loginSuccess == true) {
 					// Übersichtsfenster

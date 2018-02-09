@@ -21,6 +21,9 @@ public class JavaSurvey extends JFrame {
 		JavaSurvey javaSurvey = new JavaSurvey();  
 		javaSurvey.add(login);
 		javaSurvey.setVisible(true);
+		if (login.loginSuccess == true) {
+			// Übersichtsfenster
+		}
 
 	}
 
