@@ -1,6 +1,6 @@
 package persistance;
 
-import javaSurvey.Profile;
+import model.Profile;
 
 public interface ProfileDao {
 		

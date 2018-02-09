@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import javaSurvey.Profile;
+import model.Profile;
 
 public class ProfileJDBCDao implements ProfileDao {
 

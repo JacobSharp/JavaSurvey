@@ -1,4 +1,4 @@
-package javaSurvey;
+package model;
 
 public class User {
 

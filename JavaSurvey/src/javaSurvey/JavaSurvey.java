@@ -2,6 +2,8 @@ package javaSurvey;
 
 import javax.swing.JFrame;
 
+import view.LoginJPanel;
+
 public class JavaSurvey extends JFrame {
 
 

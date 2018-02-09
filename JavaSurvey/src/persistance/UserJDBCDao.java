@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import javaSurvey.User;
+import model.User;
 
 public class UserJDBCDao implements UserDao {
 

@@ -1,6 +1,6 @@
 package persistance;
 
-import javaSurvey.User;
+import model.User;
 
 public interface UserDao {
 	  public abstract int insertUser(User user);
