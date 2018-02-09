@@ -18,7 +18,9 @@ public class JavaSurvey extends JFrame {
 	public static void main(String[] args) {
 
 		LoginView login = new LoginView();
-		login.setVisible(true);
+		JavaSurvey javaSurvey = new JavaSurvey();  
+		javaSurvey.add(login);
+		javaSurvey.setVisible(true);
 
 	}
 

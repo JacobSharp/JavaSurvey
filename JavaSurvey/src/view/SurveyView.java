@@ -3,7 +3,7 @@ package view;
 import java.awt.*;
 import javax.swing.*;
 
-public class SurveyView extends JDialog {
+public class SurveyView extends JPanel {
 
 	/**
 	 * ehemalige Name: A4 
