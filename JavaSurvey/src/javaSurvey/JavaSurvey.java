@@ -2,7 +2,7 @@ package javaSurvey;
 
 import javax.swing.JFrame;
 
-import view.LoginJPanel;
+import view.LoginView;
 
 public class JavaSurvey extends JFrame {
 
@@ -17,7 +17,7 @@ public class JavaSurvey extends JFrame {
 
 	public static void main(String[] args) {
 
-		LoginJPanel login = new LoginJPanel();
+		LoginView login = new LoginView();
 		login.setVisible(true);
 
 	}

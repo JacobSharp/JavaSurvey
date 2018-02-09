@@ -3,7 +3,7 @@ package view;
 import java.awt.*;
 import javax.swing.*;
 
-public class SurveyJPanel extends JDialog {
+public class SurveyView extends JDialog {
 
 	/**
 	 * ehemalige Name: A4 
@@ -15,7 +15,7 @@ public class SurveyJPanel extends JDialog {
 	private JButton ja = new JButton("Ja");
 	private JButton nein = new JButton("Nein");
 
-	public SurveyJPanel() {
+	public SurveyView() {
 
 		setLayout(new BorderLayout());
 		text.setHorizontalAlignment(JLabel.CENTER);
@@ -29,7 +29,7 @@ public class SurveyJPanel extends JDialog {
 
 	public static void main(String[] args) {
 
-		SurveyJPanel launcher = new SurveyJPanel();
+		SurveyView launcher = new SurveyView();
 		launcher.setVisible(true);
 
 	}

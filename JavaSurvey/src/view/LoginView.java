@@ -9,7 +9,7 @@ import javax.swing.*;
 import controller.JavaSurveyController;
 import model.User;
 
-public class LoginJPanel extends JDialog {
+public class LoginView extends JDialog {
 
 	/**
 	 * ehemalige Name: A1
@@ -21,7 +21,7 @@ public class LoginJPanel extends JDialog {
 	private JButton regist = new JButton("Registrieren");
 	private JPanel buttonPanel = new JPanel(new GridLayout(0, 2));
 
-	public LoginJPanel() {
+	public LoginView() {
 
 		setLayout(new BorderLayout());
 		add(username, BorderLayout.NORTH);
@@ -62,7 +62,7 @@ public class LoginJPanel extends JDialog {
 
 	public static void main(String[] args) {
 
-		LoginJPanel launcher = new LoginJPanel();
+		LoginView launcher = new LoginView();
 		launcher.setVisible(true);
 
 	}
