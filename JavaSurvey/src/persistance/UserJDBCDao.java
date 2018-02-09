@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import javaSurvey.User;
+
 public class UserJDBCDao implements UserDao {
 
 	@Override
