@@ -1,4 +1,4 @@
-package javaSurvey;
+package persistance;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

@@ -1,4 +1,4 @@
-package javaSurvey;
+package persistance;
 
 public interface UserDao {
 	  public abstract int insertUser(User user);
