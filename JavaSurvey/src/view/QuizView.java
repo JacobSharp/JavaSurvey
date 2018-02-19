@@ -9,12 +9,13 @@ public class QuizView extends JDialog {
 	 * 
 	 */
 	private static final long serialVersionUID = 120428732984733599L;
-	private JTextArea eingabe = new JTextArea("schreiben...");
+	private JTextField eingabe = new JTextField("schreiben...");
 	private JButton ok = new JButton("OK");
-	private JTextArea text = new JTextArea("Beispiel Text");
+	private JLabel text = new JLabel("Beispiel Text");
 
 	public QuizView() {
 
+		text.setHorizontalAlignment(JLabel.CENTER);
 		setLayout(new BorderLayout());
 		add(text, BorderLayout.NORTH);
 		add(eingabe, BorderLayout.CENTER);

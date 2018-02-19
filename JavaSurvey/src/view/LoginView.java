@@ -11,9 +11,7 @@ import model.User;
 
 public class LoginView extends JDialog {                                                                          
 
-	/**
-	 * ehemalige Name: A1
-	 */
+
 	private static final long serialVersionUID = 120428732984733599L;
 	private JTextField username = new JTextField("Username", 20);
 	private JPasswordField pass = new JPasswordField("Password");
