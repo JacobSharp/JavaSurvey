@@ -29,7 +29,7 @@ public class CompletedSurveyJDBCDao implements CompletedSurveyDao{
 				newId = rs.getInt(1);
 			}
 		} catch (SQLException e) {
-			//throw new RuntimeException("Error occurred while saving user with username " + completedSurvey.getUsername(), e);
+			throw new RuntimeException("Error occurred while saving survey data of yours.", e);
 		} finally {
 			try {
 				if (ps != null) {
