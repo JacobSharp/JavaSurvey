@@ -9,7 +9,7 @@ import javax.swing.*;
 import controller.JavaSurveyController;
 import model.User;
 
-public class LoginView extends JDialog {
+public class LoginView extends JDialog {                                                                          
 
 	/**
 	 * ehemalige Name: A1
@@ -58,7 +58,7 @@ public class LoginView extends JDialog {
 				setLoginSuccess(loginSuccessful);
 				System.out.println("login successful? " + loginSuccess);
 				if (loginSuccess == true) {
-					// Übersichtsfenster
+					// ï¿½bersichtsfenster
 				}
 				
 			}
