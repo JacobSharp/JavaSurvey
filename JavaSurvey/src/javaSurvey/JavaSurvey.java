@@ -2,7 +2,7 @@ package javaSurvey;
 
 import javax.swing.JFrame;
 
-import view.LoginView;
+import view.*;
 
 public class JavaSurvey extends JFrame {
 
