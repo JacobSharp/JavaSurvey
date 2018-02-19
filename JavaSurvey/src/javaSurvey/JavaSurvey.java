@@ -23,10 +23,10 @@ public class JavaSurvey extends JFrame {
 		javaSurvey.setVisible(true);
 		if (login.loginSuccess == true) {
 			MainView mainView = new MainView();
-			login.setVisible(false);
+			javaSurvey.setVisible(false);
 			javaSurvey.remove(login);
 			javaSurvey.add(mainView);
-			mainView.setVisible(true);
+			javaSurvey.setVisible(true);
 		}
 
 	}
