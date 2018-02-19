@@ -58,7 +58,7 @@ public class LoginView extends JDialog {
 				setLoginSuccess(loginSuccessful);
 				System.out.println("login successful? " + loginSuccess);
 				if (loginSuccess == true) {
-					// �bersichtsfenster
+					//
 				}
 				
 			}

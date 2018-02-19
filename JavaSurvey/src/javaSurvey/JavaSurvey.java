@@ -22,7 +22,11 @@ public class JavaSurvey extends JFrame {
 		javaSurvey.add(login);
 		javaSurvey.setVisible(true);
 		if (login.loginSuccess == true) {
-			// Übersichtsfenster
+			MainView mainView = new MainView();
+			login.setVisible(false);
+			javaSurvey.remove(login);
+			javaSurvey.add(mainView);
+			mainView.setVisible(true);
 		}
 
 	}
