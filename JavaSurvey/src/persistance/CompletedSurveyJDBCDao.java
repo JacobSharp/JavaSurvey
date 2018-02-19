@@ -12,7 +12,7 @@ import model.CompletedSurvey;
 public class CompletedSurveyJDBCDao implements CompletedSurveyDao{
 
 	public int insertCompletedSurvey(CompletedSurvey completedSurvey) {
-		String sql = "insert into javasurveys.user (username, password, spielpunkte, lookAndFeel) values (?, ?, ?, ?)";
+		String sql = "insert into javasurveys.completedSurvey (user_id, survey_id) values (?, ?)";
 		Connection con = ConnectionFactory.getInstance().getConnection();
 		PreparedStatement ps = null;
 		ResultSet rs = null;

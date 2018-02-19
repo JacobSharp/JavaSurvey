@@ -37,6 +37,8 @@ public class MainView extends JDialog {
 		buttonPanel.add(ers);
 		add(buttonPanel, BorderLayout.SOUTH);
 		setSize(400, 400);
+		
+		
 
 	}
 
