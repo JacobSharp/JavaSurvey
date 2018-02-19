@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 
-public class SurveyMain extends JDialog {
+public class MainView extends JDialog {
 	
 	private static final long serialVersionUID = 520428732984733599L;
 	private JLabel title = new JLabel("Surveys");
@@ -22,7 +22,7 @@ public class SurveyMain extends JDialog {
 	private JTextField leer = new JTextField();
 	private JPanel header = new JPanel();
 	
-	public SurveyMain() {
+	public MainView() {
 		
 		header.setLayout(new BoxLayout(header, BoxLayout.Y_AXIS));
 		setLayout(new BorderLayout());
@@ -42,7 +42,7 @@ public class SurveyMain extends JDialog {
 
 	public static void main(String[] args) {
 		
-		SurveyMain launcher = new SurveyMain();
+		MainView launcher = new MainView();
 		launcher.setVisible(true);
 
 	}
