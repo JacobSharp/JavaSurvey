@@ -22,7 +22,7 @@ public class SurveyView extends JDialog {
 		add(text, BorderLayout.NORTH);
 		buttonPanel.add(ja);
 		buttonPanel.add(nein);
-		add(buttonPanel, BorderLayout.CENTER);
+		add(buttonPanel, BorderLayout.SOUTH);
 		setSize(200, 100);
 
 	}
