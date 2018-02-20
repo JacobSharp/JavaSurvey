@@ -1,6 +1,9 @@
 package view;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.*;
 
 public class SurveyView extends JDialog {
@@ -24,6 +27,30 @@ public class SurveyView extends JDialog {
 		buttonPanel.add(nein);
 		add(buttonPanel, BorderLayout.SOUTH);
 		setSize(200, 100);
+		
+		ja.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				SurveyView ja = new SurveyView();
+				ja.setVisible(true);
+				setVisible(false);
+
+			}
+		});
+		
+		nein.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				SurveyView nein = new SurveyView();
+				nein.setVisible(true);
+				setVisible(false);
+
+			}
+		});
 
 	}
 

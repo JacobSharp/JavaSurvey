@@ -1,6 +1,9 @@
 package view;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.*;
 
 public class QuizView extends JDialog {
@@ -21,6 +24,18 @@ public class QuizView extends JDialog {
 		add(eingabe, BorderLayout.CENTER);
 		add(ok, BorderLayout.EAST);
 		setSize(200, 100);
+
+		ok.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				QuizView ok = new QuizView();
+				ok.setVisible(true);
+				setVisible(false);
+
+			}
+		});
 
 	}
 
