@@ -10,7 +10,6 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 
 
 
@@ -22,7 +21,7 @@ public class MainView extends JDialog {
 	private JPanel buttonPanel = new JPanel(new GridLayout(0, 3));
 	private JButton pro = new JButton("Profil");
 	private JButton ers = new JButton("Erstellen");
-	private JTextField leer = new JTextField();
+	private JButton laf = new JButton("LookAndFeel");
 	private JPanel header = new JPanel();
 	
 	public MainView() {
@@ -35,8 +34,7 @@ public class MainView extends JDialog {
 		header.add(aufzaehlung);
 		add(header, BorderLayout.NORTH);
 		buttonPanel.add(pro);
-		buttonPanel.add(leer);
-		leer.setEditable(false);
+		buttonPanel.add(laf);
 		buttonPanel.add(ers);
 		add(buttonPanel, BorderLayout.SOUTH);
 		setSize(400, 400);
@@ -60,6 +58,18 @@ public class MainView extends JDialog {
 				
 				Erstellen erstellen = new Erstellen();
 				erstellen.setVisible(true);
+				setVisible(false);
+				
+			}
+		});
+		
+		laf.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				LookAndFeel launcher = new LookAndFeel();
+				launcher.setVisible(true);
 				setVisible(false);
 				
 			}
