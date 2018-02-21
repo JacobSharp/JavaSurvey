@@ -69,29 +69,6 @@ LOCK TABLES `frage` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `lookandfeel`
---
-
-DROP TABLE IF EXISTS `lookandfeel`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `lookandfeel` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
-  `lookAndFeel` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `lookandfeel`
---
-
-LOCK TABLES `lookandfeel` WRITE;
-/*!40000 ALTER TABLE `lookandfeel` DISABLE KEYS */;
-/*!40000 ALTER TABLE `lookandfeel` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `profile`
 --
 
@@ -128,12 +105,13 @@ DROP TABLE IF EXISTS `survey`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `survey` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
+  `survey_name` varchar(100) DEFAULT NULL,
   `isQuiz` tinyint(1) DEFAULT NULL,
   `user_id` int(10) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`),
   CONSTRAINT `survey_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -142,6 +120,7 @@ CREATE TABLE `survey` (
 
 LOCK TABLES `survey` WRITE;
 /*!40000 ALTER TABLE `survey` DISABLE KEYS */;
+INSERT INTO `survey` VALUES (1,NULL,0,1),(2,NULL,1,2),(3,NULL,1,3);
 /*!40000 ALTER TABLE `survey` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -157,11 +136,9 @@ CREATE TABLE `user` (
   `username` varchar(20) DEFAULT NULL,
   `password` varchar(20) DEFAULT NULL,
   `spielpunkte` int(10) DEFAULT NULL,
-  `lookAndFeel_id` int(10) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `lookAndFeel_id` (`lookAndFeel_id`),
-  CONSTRAINT `user_ibfk_1` FOREIGN KEY (`lookAndFeel_id`) REFERENCES `lookandfeel` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `lookAndFeel` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -170,6 +147,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` VALUES (1,'Jacob','Hero1234Password',0,'0'),(2,'Adminstrator','triedge',0,'0'),(3,'admin','triedge',0,'0'),(4,'Username','Password',0,'0');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -182,4 +160,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-02-07  9:44:46
+-- Dump completed on 2018-02-21 11:10:14
