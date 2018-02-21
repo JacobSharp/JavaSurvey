@@ -13,6 +13,8 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import controller.UserController;
+
 public class LookAndFeel extends JDialog {
 
 	private static final long serialVersionUID = 567428732984733599L;
@@ -41,7 +43,7 @@ public class LookAndFeel extends JDialog {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				getContentPane().setBackground(((ColorType)colorComboBox.getSelectedItem()).getColor());
+				getContentPane().setBackground(UserController.getController().getUserBackgroundColor().getColor());
 				eingaben.setBackground(((ColorType)colorComboBox.getSelectedItem()).getColor());
 
 			}

@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
-import controller.JavaSurveyController;
+import controller.UserController;
 import model.User;
 
 public class LoginView extends JDialog {                                                                          
@@ -43,8 +43,8 @@ public class LoginView extends JDialog {
 				user.setUsername(username.getText());
 				user.setPassword(new String(pass.getPassword()));
 				user.setSpielpunkte(0);
-				user.setLookAndFeel(0);
-				JavaSurveyController.getController().addUser(user);
+				user.setLookAndFeel(ColorType.White);
+				UserController.getController().addUser(user);
 			}
 		});
 		
@@ -52,7 +52,7 @@ public class LoginView extends JDialog {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				boolean loginSuccessful = JavaSurveyController.getController().verifyLogin(username.getText(), new String(pass.getPassword()));
+				boolean loginSuccessful = UserController.getController().verifyLogin(username.getText(), new String(pass.getPassword()));
 				setLoginSuccess(loginSuccessful);
 				System.out.println("login successful? " + loginSuccess);
 				if (loginSuccess == true) {

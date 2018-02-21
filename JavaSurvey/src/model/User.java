@@ -1,18 +1,20 @@
 package model;
 
+import view.ColorType;
+
 public class User {
 
 	private int id;
 	private String username;
 	private String password;
 	private int spielpunkte;
-	private int lookAndFeel;
+	private ColorType lookAndFeel;
 	
-	public int getLookAndFeel() {
+	public ColorType getLookAndFeel() {
 		return lookAndFeel;
 	}
 
-	public void setLookAndFeel(int lookAndFeel) {
+	public void setLookAndFeel(ColorType lookAndFeel) {
 		this.lookAndFeel = lookAndFeel;
 	}
 

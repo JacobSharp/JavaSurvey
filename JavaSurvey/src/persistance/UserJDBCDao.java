@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import model.User;
+import view.ColorType;
 
 public class UserJDBCDao implements UserDao {
 
@@ -23,10 +24,11 @@ public class UserJDBCDao implements UserDao {
 			ps.setString(1, user.getUsername());
 			ps.setString(2, user.getPassword());
 			ps.setInt(3, user.getSpielpunkte());
-			ps.setInt(4, user.getLookAndFeel());
+			ps.setString(4, user.getLookAndFeel().toString());
 			ps.executeUpdate();
 			rs = ps.getGeneratedKeys();
 
+			
 			if (rs.next()) {
 				newId = rs.getInt(1);
 			}
@@ -44,6 +46,7 @@ public class UserJDBCDao implements UserDao {
 				throw new RuntimeException("We are sorry. Technical error occurred. Please try again later.", e);
 			}
 		}
+		ConnectionFactory.getInstance().closeConnection();
 		return newId;
 
 	}
@@ -64,7 +67,7 @@ public class UserJDBCDao implements UserDao {
 			while (rs.next()) {
 				user = new User();
 				user.setId(rs.getInt("id"));
-				user.setLookAndFeel(rs.getInt("lookAndFeel"));
+				user.setLookAndFeel(ColorType.valueOf(rs.getString("lookAndFeel")));
 				user.setPassword(rs.getString("password"));
 				user.setSpielpunkte(rs.getInt("spielpunkte"));
 				user.setUsername(rs.getString("username"));
@@ -84,7 +87,46 @@ public class UserJDBCDao implements UserDao {
 				throw new RuntimeException("We are sorry. A technical error occurred. Please try again later.", e);
 			}
 		}
+		ConnectionFactory.getInstance().closeConnection();
 		return user;
+	}
+
+	@Override
+	public ColorType findUserBackgroundColor(String username) {
+		String sql = "select * from javasurveys.user where username = ?";
+		Connection con = ConnectionFactory.getInstance().getConnection();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		ColorType userBackgroundColor = null;
+
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString(1, username);
+			rs = ps.executeQuery();
+
+			while (rs.next()) {
+				String tempUserBackgroundColor = rs.getString("lookAndFeel");
+				if (tempUserBackgroundColor != null) {			
+					userBackgroundColor = ColorType.valueOf(tempUserBackgroundColor);
+				}
+				break;
+			}
+		} catch (SQLException e) {
+			throw new RuntimeException("Error occurred while searching user with username " + username, e);
+		} finally {
+			try {
+				if (ps != null) {
+					ps.close();
+				}
+				if (rs != null) {
+					rs.close();
+				}
+			} catch (SQLException e) {
+				throw new RuntimeException("We are sorry. A technical error occurred. Please try again later.", e);
+			}
+		}
+		ConnectionFactory.getInstance().closeConnection();
+		return userBackgroundColor;
 	}
 
 }
