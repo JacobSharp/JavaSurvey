@@ -27,6 +27,7 @@ public class SurveyJDBCDao implements SurveyDao {
 				survey.setId(rs.getInt("id"));
 				survey.setQuiz(rs.getBoolean("isQuiz"));
 				survey.setUser_id(rs.getInt("user_id"));
+				survey.setSurveyTitle(rs.getString("survey_name"));
 				surveyList.add(survey);
 			}
 		} catch (SQLException e) {
@@ -50,7 +51,7 @@ public class SurveyJDBCDao implements SurveyDao {
 		SurveyJDBCDao test = new SurveyJDBCDao();
 		List<Survey> surveys = test.findAllSurveys();
 		for(Survey survey : surveys) {
-			System.out.println(survey.getId() + " " + survey.isQuiz() + " " + survey.getUser_id());
+			System.out.println(survey.getId() + " " + survey.isQuiz() + " " + survey.getUser_id() + " " + survey.getSurveyTitle());
 			
 		}
 	}
