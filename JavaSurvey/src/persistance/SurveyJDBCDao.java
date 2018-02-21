@@ -51,8 +51,7 @@ public class SurveyJDBCDao implements SurveyDao {
 		SurveyJDBCDao test = new SurveyJDBCDao();
 		List<Survey> surveys = test.findAllSurveys();
 		for(Survey survey : surveys) {
-			System.out.println(survey.getId() + " " + survey.isQuiz() + " " + survey.getUser_id() + " " + survey.getSurveyTitle());
-			
+			System.out.println(survey.getId() + " " + survey.isQuiz() + " " + survey.getUser_id() + " " + survey.getSurveyTitle());			
 		}
 	}
 }
