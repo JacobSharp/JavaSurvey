@@ -1,11 +1,11 @@
 package persistance;
 
-import model.Survey;
+import java.util.List;
 
+import model.Survey;
 
 public interface SurveyDao {
 
-	public abstract Survey findSurvey(); 
+	public abstract List<Survey> findAllSurveys();
 
-	
 }
