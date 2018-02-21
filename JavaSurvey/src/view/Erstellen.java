@@ -58,6 +58,18 @@ public class Erstellen extends JDialog {
 			}
 		});
 		
+		su.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				ESurvey launcher = new ESurvey();
+				launcher.setVisible(true);
+				setVisible(false);
+				
+			}
+		});
+		
 	}
 
 	public static void main(String[] args) {

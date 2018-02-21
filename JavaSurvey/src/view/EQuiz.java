@@ -35,8 +35,6 @@ public class EQuiz extends JDialog {
 		buttonPanel.add(back);
 		buttonPanel.add(save);
 		add(buttonPanel, BorderLayout.SOUTH);
-		add(in, BorderLayout.CENTER);
-		add(ant, BorderLayout.CENTER);
 		setSize(400, 400);
 		
 		back.addActionListener(new ActionListener() {
