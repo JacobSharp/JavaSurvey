@@ -43,7 +43,7 @@ public class LoginView extends JDialog {
 				user.setUsername(username.getText());
 				user.setPassword(new String(pass.getPassword()));
 				user.setSpielpunkte(0);
-				user.setLookAndFeel(ColorType.White);
+				user.setLookAndFeel(ColorType.WHITE);
 				UserController.getController().addUser(user);
 			}
 		});

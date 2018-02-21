@@ -46,7 +46,6 @@ public class UserJDBCDao implements UserDao {
 				throw new RuntimeException("We are sorry. Technical error occurred. Please try again later.", e);
 			}
 		}
-		ConnectionFactory.getInstance().closeConnection();
 		return newId;
 
 	}
@@ -67,7 +66,8 @@ public class UserJDBCDao implements UserDao {
 			while (rs.next()) {
 				user = new User();
 				user.setId(rs.getInt("id"));
-				user.setLookAndFeel(ColorType.valueOf(rs.getString("lookAndFeel")));
+				System.out.println("User color: " + rs.getString("lookAndFeel"));
+				user.setLookAndFeel(ColorType.valueOf(rs.getString("lookAndFeel").toUpperCase()));
 				user.setPassword(rs.getString("password"));
 				user.setSpielpunkte(rs.getInt("spielpunkte"));
 				user.setUsername(rs.getString("username"));
@@ -87,7 +87,6 @@ public class UserJDBCDao implements UserDao {
 				throw new RuntimeException("We are sorry. A technical error occurred. Please try again later.", e);
 			}
 		}
-		ConnectionFactory.getInstance().closeConnection();
 		return user;
 	}
 
@@ -105,7 +104,8 @@ public class UserJDBCDao implements UserDao {
 			rs = ps.executeQuery();
 
 			while (rs.next()) {
-				String tempUserBackgroundColor = rs.getString("lookAndFeel");
+				String tempUserBackgroundColor = rs.getString("lookAndFeel").toUpperCase();
+				System.out.println("BackgroundColor of user \"" + username + "\" is " + tempUserBackgroundColor);
 				if (tempUserBackgroundColor != null) {			
 					userBackgroundColor = ColorType.valueOf(tempUserBackgroundColor);
 				}
@@ -125,8 +125,37 @@ public class UserJDBCDao implements UserDao {
 				throw new RuntimeException("We are sorry. A technical error occurred. Please try again later.", e);
 			}
 		}
-		ConnectionFactory.getInstance().closeConnection();
+//		ConnectionFactory.getInstance().closeConnection();
 		return userBackgroundColor;
 	}
+	
+	public void updateUserBackgroundColor(User user) {
+		System.out.println(user.getLookAndFeel().toString().toLowerCase());
+		String sql = "UPDATE user SET lookAndFeel = ? WHERE id = ?";
+		Connection con = ConnectionFactory.getInstance().getConnection();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString(1, user.getLookAndFeel().toString().toLowerCase());
+			ps.setInt(2, user.getId());
+			rs = ps.executeQuery();
 
+		} catch (SQLException e) {
+			throw new RuntimeException("Error occurred while executing your process", e);
+		} finally {
+			try {
+				if (ps != null) {
+					ps.close();
+				}
+				if (rs != null) {
+					rs.close();
+				}
+			} catch (SQLException e) {
+				throw new RuntimeException("We are sorry. A technical error occurred. Please try again later.", e);
+			}
+		}
+		
+	}
 }

@@ -1,5 +1,7 @@
 package controller;
 
+import java.awt.Color;
+
 import model.User;
 import persistance.UserDao;
 import persistance.UserJDBCDao;
@@ -31,6 +33,7 @@ public class UserController {
 
 		if (user != null && user.getPassword().equals(password)) {
 			this.user = user;
+			getUserBackgroundColor();
 			return true;
 		} else {
 			return false;
@@ -43,9 +46,16 @@ public class UserController {
 			if (tempUserBackgroundColor != null) {
 				userBackgroundColor = tempUserBackgroundColor;
 			} else {
-				userBackgroundColor = ColorType.White;
+				userBackgroundColor = ColorType.WHITE;
 			}
 		}
 		return userBackgroundColor;
+	}
+
+	public void changeUserBackgroundColor(Color color) { // TODO Color zum ColorType konvertieren (via ColorType manuelle helper-Klasse)
+		user.setLookAndFeel(color);
+		userDao.updateUserBackgroundColor(user);
+		
+		
 	}
 }

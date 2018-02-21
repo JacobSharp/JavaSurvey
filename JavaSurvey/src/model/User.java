@@ -2,6 +2,8 @@ package model;
 
 import view.ColorType;
 
+
+
 public class User {
 
 	private int id;
@@ -14,8 +16,8 @@ public class User {
 		return lookAndFeel;
 	}
 
-	public void setLookAndFeel(ColorType lookAndFeel) {
-		this.lookAndFeel = lookAndFeel;
+	public void setLookAndFeel(ColorType white) {
+		this.lookAndFeel = white;
 	}
 
 	public int getId() {
