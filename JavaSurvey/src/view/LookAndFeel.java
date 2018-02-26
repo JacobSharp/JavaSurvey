@@ -51,6 +51,7 @@ public class LookAndFeel extends JDialog {
 		buttonPanel.add(save);
 		add(buttonPanel, BorderLayout.SOUTH);
 		setSize(400, 400);
+		setTitle("Preferences");
 
 		back.addActionListener(new ActionListener() {
 

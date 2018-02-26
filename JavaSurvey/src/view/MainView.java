@@ -51,7 +51,7 @@ public class MainView extends JDialog {
 	public MainView() {
 		setSize(400, 400);
 		setLayout(new BorderLayout());
-
+		setTitle("Main");
 		SurveyJDBCDao surveyImport = new SurveyJDBCDao();
 		List<Survey> surveyList = surveyImport.findAllSurveys();
 		List<Quiz> quizList = surveyImport.findAllQuizzes();
@@ -151,7 +151,7 @@ public class MainView extends JDialog {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				Profil profil = new Profil();
+				ProfilView profil = new ProfilView();
 				profil.setVisible(true);
 				setVisible(false);
 

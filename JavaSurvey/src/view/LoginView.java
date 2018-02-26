@@ -38,6 +38,7 @@ public class LoginView extends JDialog {
 		buttonPanel.add(regist);
 		add(buttonPanel, BorderLayout.SOUTH);
 		setSize(230, 100);
+		setTitle("Login");
 
 		regist.addActionListener(new ActionListener() {
 

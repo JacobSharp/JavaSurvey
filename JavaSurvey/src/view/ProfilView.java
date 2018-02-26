@@ -15,7 +15,7 @@ import javax.swing.JTextField;
 import controller.UserController;
 import model.User;
 
-public class Profil extends JDialog {
+public class ProfilView extends JDialog {
 
 	private static final long serialVersionUID = 420428732984733599L;
 	private JLabel title = new JLabel("Profil");
@@ -34,8 +34,8 @@ public class Profil extends JDialog {
 	private JPanel header = new JPanel();
 	private User user = UserController.getController().getUser();
 
-	public Profil() {
-		
+	public ProfilView() {
+
 		if (user != null) {
 			userIdData.setText(String.valueOf(user.getId()));
 			userNameData.setText(user.getUsername());
@@ -64,6 +64,7 @@ public class Profil extends JDialog {
 		leer.setEditable(false);
 		add(buttonPanel, BorderLayout.SOUTH);
 		setSize(400, 400);
+		setTitle("Profile");
 
 		back.addActionListener(new ActionListener() {
 
@@ -71,7 +72,7 @@ public class Profil extends JDialog {
 			public void actionPerformed(ActionEvent e) {
 
 				MainView back = new MainView();
-				
+
 				back.setVisible(true);
 				setVisible(false);
 
@@ -82,7 +83,7 @@ public class Profil extends JDialog {
 
 	public static void main(String[] args) {
 
-		Profil launcher = new Profil();
+		ProfilView launcher = new ProfilView();
 		launcher.setVisible(true);
 
 	}

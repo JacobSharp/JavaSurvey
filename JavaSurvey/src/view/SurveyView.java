@@ -27,6 +27,7 @@ public class SurveyView extends JDialog {
 		buttonPanel.add(nein);
 		add(buttonPanel, BorderLayout.SOUTH);
 		setSize(200, 100);
+		setTitle("Survey");
 		
 		ja.addActionListener(new ActionListener() {
 

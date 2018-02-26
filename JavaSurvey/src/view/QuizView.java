@@ -24,6 +24,7 @@ public class QuizView extends JDialog {
 		add(eingabe, BorderLayout.CENTER);
 		add(ok, BorderLayout.EAST);
 		setSize(200, 100);
+		setTitle("Quiz");
 
 		ok.addActionListener(new ActionListener() {
 
