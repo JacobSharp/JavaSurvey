@@ -15,6 +15,7 @@ public class QuizView extends JDialog {
 	private JTextField eingabe = new JTextField("schreiben...");
 	private JButton ok = new JButton("OK");
 	private JLabel text = new JLabel("Beispiel Text");
+	
 
 	public QuizView() {
 
