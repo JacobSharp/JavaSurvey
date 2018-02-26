@@ -23,11 +23,11 @@ public class LookAndFeel extends JDialog {
 	private JButton back = new JButton("Zurück");
 	private JButton save = new JButton("Anwenden");
 	private JPanel eingaben = new JPanel(new FlowLayout(FlowLayout.CENTER));
-	private JComboBox<ColorType> colorComboBox = new JComboBox<ColorType>(); 
+	private JComboBox<ColorType> colorComboBox = new JComboBox<ColorType>();
 
 	public LookAndFeel() {
-		
-		for(ColorType ct : ColorType.values()) {
+
+		for (ColorType ct : ColorType.values()) {
 			colorComboBox.addItem(ct);
 		}
 
@@ -41,10 +41,10 @@ public class LookAndFeel extends JDialog {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Color color = ((ColorType)colorComboBox.getSelectedItem()).getColor();
+				Color color = ((ColorType) colorComboBox.getSelectedItem()).getColor();
 				getContentPane().setBackground(UserController.getController().getUserBackgroundColor().getColor());
 				eingaben.setBackground(color);
-				//TODO: Write changes color to DB HERE
+				// TODO: Write changes color to DB HERE
 				UserController.getController().changeUserBackgroundColor(color);
 			}
 		});

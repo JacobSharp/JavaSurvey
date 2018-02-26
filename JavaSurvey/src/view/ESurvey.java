@@ -36,23 +36,23 @@ public class ESurvey extends JDialog {
 		buttonPanel.add(save);
 		add(buttonPanel, BorderLayout.SOUTH);
 		setSize(400, 400);
-		
+
 		back.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+
 				Erstellen launcher = new Erstellen();
 				launcher.setVisible(true);
 				setVisible(false);
-				
+
 			}
 		});
-		
+
 	}
 
 	public static void main(String[] args) {
-		
+
 		ESurvey launcher = new ESurvey();
 		launcher.setVisible(true);
 

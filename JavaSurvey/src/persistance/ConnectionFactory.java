@@ -14,7 +14,8 @@ public class ConnectionFactory {
 
 	private Connection connection = null;
 
-	private ConnectionFactory() {}
+	private ConnectionFactory() {
+	}
 
 	public Connection getConnection() {
 

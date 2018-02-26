@@ -4,7 +4,7 @@ import java.awt.Color;
 
 public enum ColorType {
 	CYAN(Color.cyan), MAGENTA(Color.magenta), YELLOW(Color.yellow), RED(Color.red), GREEN(Color.green), BLUE(
-			Color.blue), WHITE(Color.white); 
+			Color.blue), WHITE(Color.white);
 
 	private final Color color;
 

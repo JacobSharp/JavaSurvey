@@ -18,7 +18,6 @@ public class SurveyJDBCDao implements SurveyDao {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		List<Survey> surveyList = new ArrayList<Survey>();
-		
 
 		try {
 			ps = con.prepareStatement(sql);
@@ -48,14 +47,13 @@ public class SurveyJDBCDao implements SurveyDao {
 		}
 		return surveyList;
 	}
-	
+
 	public List<Quiz> findAllQuizzes() {
 		String sql = "select * from javasurveys.survey where isQuiz = 1";
 		Connection con = ConnectionFactory.getInstance().getConnection();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		List<Quiz> quizList = new ArrayList<Quiz>();
-		
 
 		try {
 			ps = con.prepareStatement(sql);
@@ -85,7 +83,7 @@ public class SurveyJDBCDao implements SurveyDao {
 		}
 		return quizList;
 	}
-	
+
 	public List<Survey> findAllQuestions() {
 		String sql = "select * from javasurveys.frage where user_id = ?";
 		Connection con = ConnectionFactory.getInstance().getConnection();
@@ -95,7 +93,7 @@ public class SurveyJDBCDao implements SurveyDao {
 
 		try {
 			ps = con.prepareStatement(sql);
-			//ps.setInt(1, );
+			// ps.setInt(1, );
 			rs = ps.executeQuery();
 
 			while (rs.next()) {
@@ -126,8 +124,9 @@ public class SurveyJDBCDao implements SurveyDao {
 	public static void main(String[] args) {
 		SurveyJDBCDao test = new SurveyJDBCDao();
 		List<Survey> surveys = test.findAllSurveys();
-		for(Survey survey : surveys) {
-			System.out.println(survey.getId() + " " + survey.isQuiz() + " " + survey.getUser_id() + " " + survey.getSurveyTitle());			
+		for (Survey survey : surveys) {
+			System.out.println(
+					survey.getId() + " " + survey.isQuiz() + " " + survey.getUser_id() + " " + survey.getSurveyTitle());
 		}
 	}
 }

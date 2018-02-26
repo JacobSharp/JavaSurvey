@@ -22,7 +22,7 @@ public class Erstellen extends JDialog {
 	private JPanel header = new JPanel();
 
 	public Erstellen() {
-		
+
 		header.setLayout(new BoxLayout(header, BoxLayout.Y_AXIS));
 		setLayout(new BorderLayout());
 		title.setHorizontalAlignment(JLabel.CENTER);
@@ -33,50 +33,50 @@ public class Erstellen extends JDialog {
 		buttonPanel.add(qu);
 		add(buttonPanel, BorderLayout.SOUTH);
 		setSize(400, 400);
-		
+
 		back.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+
 				MainView back = new MainView();
 				back.setVisible(true);
 				setVisible(false);
-				
+
 			}
 		});
-		
+
 		qu.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+
 				EQuiz launcher = new EQuiz();
 				launcher.setVisible(true);
 				setVisible(false);
-				
+
 			}
 		});
-		
+
 		su.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+
 				ESurvey launcher = new ESurvey();
 				launcher.setVisible(true);
 				setVisible(false);
-				
+
 			}
 		});
-		
+
 	}
 
 	public static void main(String[] args) {
-		
+
 		Erstellen launcher = new Erstellen();
 		launcher.setVisible(true);
-	
+
 	}
 
 }

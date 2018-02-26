@@ -22,7 +22,7 @@ public class EQuiz extends JDialog {
 	private JTextField in = new JTextField("Hier deine Frage hinschreiben");
 	private JTextField ant = new JTextField("Hier die Antwort hinschreiben");
 	private JPanel eingaben = new JPanel();
-	
+
 	public EQuiz() {
 
 		eingaben.setLayout(new BoxLayout(eingaben, BoxLayout.Y_AXIS));
@@ -36,23 +36,23 @@ public class EQuiz extends JDialog {
 		buttonPanel.add(save);
 		add(buttonPanel, BorderLayout.SOUTH);
 		setSize(400, 400);
-		
+
 		back.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+
 				Erstellen launcher = new Erstellen();
 				launcher.setVisible(true);
 				setVisible(false);
-				
+
 			}
 		});
-		
+
 	}
 
 	public static void main(String[] args) {
-		
+
 		EQuiz launcher = new EQuiz();
 		launcher.setVisible(true);
 

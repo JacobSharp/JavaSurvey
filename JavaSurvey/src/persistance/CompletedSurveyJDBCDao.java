@@ -8,8 +8,7 @@ import java.sql.Statement;
 
 import model.CompletedSurvey;
 
-
-public class CompletedSurveyJDBCDao implements CompletedSurveyDao{
+public class CompletedSurveyJDBCDao implements CompletedSurveyDao {
 
 	public int insertCompletedSurvey(CompletedSurvey completedSurvey) {
 		String sql = "insert into javasurveys.completedSurvey (user_id, survey_id) values (?, ?)";
@@ -46,5 +45,4 @@ public class CompletedSurveyJDBCDao implements CompletedSurveyDao{
 
 	}
 
-	
 }

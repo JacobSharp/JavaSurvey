@@ -2,8 +2,6 @@ package model;
 
 import view.ColorType;
 
-
-
 public class User {
 
 	private int id;
@@ -11,7 +9,7 @@ public class User {
 	private String password;
 	private int spielpunkte;
 	private ColorType lookAndFeel;
-	
+
 	public ColorType getLookAndFeel() {
 		return lookAndFeel;
 	}
