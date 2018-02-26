@@ -38,6 +38,7 @@ CREATE TABLE `completedsurvey` (
 
 LOCK TABLES `completedsurvey` WRITE;
 /*!40000 ALTER TABLE `completedsurvey` DISABLE KEYS */;
+INSERT INTO `completedsurvey` VALUES (4,22);
 /*!40000 ALTER TABLE `completedsurvey` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -56,7 +57,7 @@ CREATE TABLE `frage` (
   PRIMARY KEY (`id`),
   KEY `survey_id` (`survey_id`),
   CONSTRAINT `frage_ibfk_1` FOREIGN KEY (`survey_id`) REFERENCES `survey` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -65,6 +66,7 @@ CREATE TABLE `frage` (
 
 LOCK TABLES `frage` WRITE;
 /*!40000 ALTER TABLE `frage` DISABLE KEYS */;
+INSERT INTO `frage` VALUES (2,'test1','0',22),(3,'test2','0',22),(4,'test3','0',22);
 /*!40000 ALTER TABLE `frage` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -111,7 +113,7 @@ CREATE TABLE `survey` (
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`),
   CONSTRAINT `survey_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -120,7 +122,7 @@ CREATE TABLE `survey` (
 
 LOCK TABLES `survey` WRITE;
 /*!40000 ALTER TABLE `survey` DISABLE KEYS */;
-INSERT INTO `survey` VALUES (1,NULL,0,1),(2,NULL,1,2),(3,NULL,1,3);
+INSERT INTO `survey` VALUES (22,'testSurvey',0,4);
 /*!40000 ALTER TABLE `survey` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -147,7 +149,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'Jacob','Hero1234Password',0,'0'),(2,'Adminstrator','triedge',0,'0'),(3,'admin','triedge',0,'0'),(4,'Username','Password',0,'0');
+INSERT INTO `user` VALUES (4,'Username','Password',0,'white');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -160,4 +162,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-02-21 11:10:14
+-- Dump completed on 2018-02-26 14:48:34

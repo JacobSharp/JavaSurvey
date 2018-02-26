@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import model.Profile;
-import view.ColorType;
 
 public class ProfileJDBCDao implements ProfileDao {
 
