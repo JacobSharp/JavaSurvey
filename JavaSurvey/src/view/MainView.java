@@ -13,8 +13,10 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import controller.UserController;
 import model.Quiz;
 import model.Survey;
+import model.User;
 import persistance.SurveyJDBCDao;
 
 public class MainView extends JDialog {
@@ -47,6 +49,11 @@ public class MainView extends JDialog {
 	private JButton pro = new JButton("Profil");
 	private JButton ers = new JButton("Erstellen");
 	private JButton laf = new JButton("LookAndFeel");
+	private User user = UserController.getController().getUser();
+
+	private void subtractUserPoints() {
+		user.setSpielpunkte(user.getSpielpunkte() - 1);
+	}
 
 	public MainView() {
 		setSize(400, 400);
@@ -174,11 +181,17 @@ public class MainView extends JDialog {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				if (user.getSpielpunkte() != 0) {
+					subtractUserPoints();
+					LookAndFeel launcher = new LookAndFeel();
+					launcher.setVisible(true);
+					setVisible(false);
 
-				LookAndFeel launcher = new LookAndFeel();
-				launcher.setVisible(true);
-				setVisible(false);
-
+				}
+				else {
+					System.out.println("Du hast keine Spielpünkte. Es kostet einen Punkt um den Look and Feel zu ändern.");
+				}
+				
 			}
 		});
 
