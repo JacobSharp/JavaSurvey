@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -13,7 +14,9 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import controller.UserController;
+import model.Survey;
 import model.User;
+import persistance.SurveyJDBCDao;
 
 public class Profil extends JDialog {
 
@@ -71,6 +74,9 @@ public class Profil extends JDialog {
 			public void actionPerformed(ActionEvent e) {
 
 				MainView back = new MainView();
+				SurveyJDBCDao surveyTest = new SurveyJDBCDao();
+				List<Survey> surveyList = surveyTest.findAllSurveys();
+				back.setS1Text(surveyList.get(0).getSurveyTitle());
 				back.setVisible(true);
 				setVisible(false);
 
