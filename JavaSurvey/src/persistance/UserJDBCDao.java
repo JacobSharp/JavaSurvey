@@ -24,7 +24,7 @@ public class UserJDBCDao implements UserDao {
 			ps.setString(1, user.getUsername());
 			ps.setString(2, user.getPassword());
 			ps.setInt(3, user.getSpielpunkte());
-			ps.setString(4, user.getLookAndFeel().toString());
+			ps.setString(4, Integer.toString(user.getLookAndFeel().getColor().getRGB()));
 			ps.executeUpdate();
 			rs = ps.getGeneratedKeys();
 
@@ -65,8 +65,8 @@ public class UserJDBCDao implements UserDao {
 			while (rs.next()) {
 				user = new User();
 				user.setId(rs.getInt("id"));
-				System.out.println("User color: " + rs.getString("lookAndFeel"));
-				user.setLookAndFeel(ColorType.valueOf(rs.getString("lookAndFeel").toUpperCase()));
+				user.setLookAndFeel(ColorType.convertStringToColorType(rs.getString("lookAndFeel")));
+				// user.setLookAndFeel(ColorType.valueOf(rs.getString("lookAndFeel").toUpperCase()));
 				user.setPassword(rs.getString("password"));
 				user.setSpielpunkte(rs.getInt("spielpunkte"));
 				user.setUsername(rs.getString("username"));
@@ -103,11 +103,7 @@ public class UserJDBCDao implements UserDao {
 			rs = ps.executeQuery();
 
 			while (rs.next()) {
-				String tempUserBackgroundColor = rs.getString("lookAndFeel").toUpperCase();
-				if (tempUserBackgroundColor != null) {
-					userBackgroundColor = ColorType.valueOf(tempUserBackgroundColor);
-				}
-				break;
+				userBackgroundColor = ColorType.convertStringToColorType(rs.getString("lookAndFeel"));
 			}
 		} catch (SQLException e) {
 			throw new RuntimeException("Error occurred while searching user with username " + username, e);
@@ -128,7 +124,6 @@ public class UserJDBCDao implements UserDao {
 	}
 
 	public void updateUserBackgroundColor(User user) {
-		System.out.println(user.getLookAndFeel().toString().toLowerCase());
 		String sql = "UPDATE user SET lookAndFeel = ? WHERE id = ?";
 		Connection con = ConnectionFactory.getInstance().getConnection();
 		PreparedStatement ps = null;
@@ -136,9 +131,9 @@ public class UserJDBCDao implements UserDao {
 
 		try {
 			ps = con.prepareStatement(sql);
-			ps.setString(1, user.getLookAndFeel().toString().toLowerCase());
+			ps.setString(1, ColorType.convertColorToString(user.getLookAndFeel().getColor()));
 			ps.setInt(2, user.getId());
-			rs = ps.executeQuery();
+			ps.executeUpdate();
 
 		} catch (SQLException e) {
 			throw new RuntimeException("Error occurred while executing your process", e);

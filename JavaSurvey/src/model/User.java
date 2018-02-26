@@ -14,8 +14,8 @@ public class User {
 		return lookAndFeel;
 	}
 
-	public void setLookAndFeel(ColorType white) {
-		this.lookAndFeel = white;
+	public void setLookAndFeel(ColorType color) {
+		this.lookAndFeel = color;
 	}
 
 	public int getId() {
