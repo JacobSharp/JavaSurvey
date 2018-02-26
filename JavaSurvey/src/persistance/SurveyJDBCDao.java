@@ -126,6 +126,7 @@ public class SurveyJDBCDao implements SurveyDao {
 
 			while (rs.next()) {
 				quiz.addFrage(rs.getString("frage"));
+				quiz.addAntwort(rs.getString("antwort"));
 			}
 		} catch (SQLException e) {
 			throw new RuntimeException("Error", e);

@@ -13,6 +13,7 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import controller.QuizController;
 import controller.SurveyController;
 import controller.UserController;
 import model.Quiz;
@@ -52,6 +53,7 @@ public class MainView extends JDialog {
 	private JButton laf = new JButton("LookAndFeel");
 	private User user = UserController.getController().getUser();
 	private SurveyController SURVEY_CONTROLLER = SurveyController.getController();
+	private QuizController QUIZ_CONTROLLER = QuizController.getController();
 
 	private void subtractUserPoints() {
 		user.setSpielpunkte(user.getSpielpunkte() - 1);
@@ -117,12 +119,51 @@ public class MainView extends JDialog {
 		surveyTitlePanel.add(surveyTitle);
 		if (surveyCount >= 1) {
 			s1ButtonPanel.add(s1);
+			s1.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					SURVEY_CONTROLLER.setCurrentSurvey(surveyList.get(0));
+					String question = SURVEY_CONTROLLER.getNextQuestion();
+					SurveyView survey = new SurveyView(question);
+					setVisible(false);
+					survey.setVisible(true);
+
+				}
+
+			});
 		}
 		if (surveyCount >= 2) {
 			s2ButtonPanel.add(s2);
+			s2.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					SURVEY_CONTROLLER.setCurrentSurvey(surveyList.get(1));
+					String question = SURVEY_CONTROLLER.getNextQuestion();
+					SurveyView survey = new SurveyView(question);
+					setVisible(false);
+					survey.setVisible(true);
+
+				}
+
+			});
 		}
 		if (surveyCount >= 3) {
 			s3ButtonPanel.add(s3);
+			s3.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					SURVEY_CONTROLLER.setCurrentSurvey(surveyList.get(2));
+					String question = SURVEY_CONTROLLER.getNextQuestion();
+					SurveyView survey = new SurveyView(question);
+					setVisible(false);
+					survey.setVisible(true);
+
+				}
+
+			});
 		}
 		northButtonPanel.add(s1ButtonPanel);
 		northButtonPanel.add(s2ButtonPanel);
@@ -135,12 +176,51 @@ public class MainView extends JDialog {
 		quizTitlePanel.add(quizTitle);
 		if (quizCount >= 1) {
 			q1ButtonPanel.add(q1);
+			q1.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+
+					QUIZ_CONTROLLER.setCurrentQuiz(quizList.get(0));
+					String question = QUIZ_CONTROLLER.getNextQuestion();
+					QuizView quiz = new QuizView(question);
+					quiz.setVisible(true);
+					setVisible(false);
+
+				}
+			});
 		}
 		if (quizCount >= 2) {
 			q2ButtonPanel.add(q2);
+			q2.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+
+					QUIZ_CONTROLLER.setCurrentQuiz(quizList.get(1));
+					String question = QUIZ_CONTROLLER.getNextQuestion();
+					QuizView quiz = new QuizView(question);
+					quiz.setVisible(true);
+					setVisible(false);
+
+				}
+			});
 		}
 		if (quizCount >= 3) {
 			q3ButtonPanel.add(q3);
+			q3.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+
+					QUIZ_CONTROLLER.setCurrentQuiz(quizList.get(2));
+					String question = QUIZ_CONTROLLER.getNextQuestion();
+					QuizView quiz = new QuizView(question);
+					quiz.setVisible(true);
+					setVisible(false);
+
+				}
+			});
 		}
 		centerButtonPanel.add(q1ButtonPanel);
 		centerButtonPanel.add(q2ButtonPanel);
@@ -202,26 +282,16 @@ public class MainView extends JDialog {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				QuizView launche = new QuizView();
-				launche.setVisible(true);
+				QUIZ_CONTROLLER.setCurrentQuiz(quizList.get(0));
+				String question = QUIZ_CONTROLLER.getNextQuestion();
+				QuizView quiz = new QuizView(question);
+				quiz.setVisible(true);
 				setVisible(false);
 
 			}
 		});
 
-		s1.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				SURVEY_CONTROLLER.setCurrentSurvey(surveyList.get(0));
-				String question = SURVEY_CONTROLLER.getNextQuestion();
-				SurveyView survey = new SurveyView(question);
-				setVisible(false);
-				survey.setVisible(true);
-
-			}
-
-		});
+		
 
 	}
 

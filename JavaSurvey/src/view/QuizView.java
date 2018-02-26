@@ -1,10 +1,18 @@
 package view;
 
-import java.awt.*;
+import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.*;
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+
+import controller.QuizController;
+import controller.UserController;
+import model.User;
+import persistance.CompletedSurveyJDBCDao;
 
 public class QuizView extends JDialog {
 
@@ -15,9 +23,14 @@ public class QuizView extends JDialog {
 	private JTextField eingabe = new JTextField("schreiben...");
 	private JButton ok = new JButton("OK");
 	private JLabel text = new JLabel("Beispiel Text");
-	
+	private User user = UserController.getController().getUser();
+	private QuizController QUIZ_CONTROLLER = QuizController.getController();
 
-	public QuizView() {
+	private void addUserPoints() {
+		user.setSpielpunkte(user.getSpielpunkte() + 1);
+	}
+
+	public QuizView(String question) {
 
 		text.setHorizontalAlignment(JLabel.CENTER);
 		setLayout(new BorderLayout());
@@ -32,19 +45,31 @@ public class QuizView extends JDialog {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				QuizView ok = new QuizView();
-				ok.setVisible(true);
-				setVisible(false);
+				String question = QUIZ_CONTROLLER.getNextQuestion();
+				String antwort = QUIZ_CONTROLLER.getNextAntwort();
 
-			}
+				if (question != null) {
+					if (eingabe.toString() == antwort) {
+						QuizView next = new QuizView(question);
+						next.setVisible(true);
+						setVisible(false);
+					} else {
+						
+					}}
+					else {
+						addUserPoints();
+						CompletedSurveyJDBCDao comp = new CompletedSurveyJDBCDao();
+						comp.insertCompletedSurvey(user.getId(),
+								QuizController.getController().getCurrentQuiz().getId());
+						MainView main = new MainView();
+						setVisible(false);
+						main.setVisible(true);
+					}
+					
+					}
+					
+			
 		});
-
-	}
-
-	public static void main(String[] args) {
-
-		QuizView launcher = new QuizView();
-		launcher.setVisible(true);
 
 	}
 
