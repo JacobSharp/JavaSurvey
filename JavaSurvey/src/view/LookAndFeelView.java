@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 
 import controller.UserController;
 
-public class LookAndFeel extends JDialog {
+public class LookAndFeelView extends JDialog {
 
 	private static final long serialVersionUID = 567428732984733599L;
 	private JLabel title = new JLabel("Ändere dein LookAndFeel");
@@ -25,7 +25,7 @@ public class LookAndFeel extends JDialog {
 	private JPanel eingaben = new JPanel(new FlowLayout(FlowLayout.CENTER));
 	private JComboBox<ColorType> colorComboBox = new JComboBox<ColorType>();
 
-	public LookAndFeel() {
+	public LookAndFeelView() {
 
 		for (ColorType ct : ColorType.values()) {
 			colorComboBox.addItem(ct);
@@ -69,7 +69,7 @@ public class LookAndFeel extends JDialog {
 
 	public static void main(String[] args) {
 
-		LookAndFeel launcher = new LookAndFeel();
+		LookAndFeelView launcher = new LookAndFeelView();
 		launcher.setVisible(true);
 
 	}

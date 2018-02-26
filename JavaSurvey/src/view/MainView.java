@@ -183,7 +183,7 @@ public class MainView extends JDialog {
 			public void actionPerformed(ActionEvent e) {
 				if (user.getSpielpunkte() != 0) {
 					subtractUserPoints();
-					LookAndFeel launcher = new LookAndFeel();
+					LookAndFeelView launcher = new LookAndFeelView();
 					launcher.setVisible(true);
 					setVisible(false);
 
