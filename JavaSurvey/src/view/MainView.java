@@ -269,11 +269,11 @@ public class MainView extends JDialog {
 					launcher.setVisible(true);
 					setVisible(false);
 
+				} else {
+					System.out.println(
+							"Du hast keine Spielpünkte. Es kostet einen Punkt um den Look and Feel zu ändern.");
 				}
-				else {
-					System.out.println("Du hast keine Spielpünkte. Es kostet einen Punkt um den Look and Feel zu ändern.");
-				}
-				
+
 			}
 		});
 
@@ -290,8 +290,6 @@ public class MainView extends JDialog {
 
 			}
 		});
-
-		
 
 	}
 

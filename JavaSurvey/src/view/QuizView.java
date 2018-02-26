@@ -54,21 +54,19 @@ public class QuizView extends JDialog {
 						next.setVisible(true);
 						setVisible(false);
 					} else {
-						
-					}}
-					else {
-						addUserPoints();
-						CompletedSurveyJDBCDao comp = new CompletedSurveyJDBCDao();
-						comp.insertCompletedSurvey(user.getId(),
-								QuizController.getController().getCurrentQuiz().getId());
-						MainView main = new MainView();
-						setVisible(false);
-						main.setVisible(true);
+
 					}
-					
-					}
-					
-			
+				} else {
+					addUserPoints();
+					CompletedSurveyJDBCDao comp = new CompletedSurveyJDBCDao();
+					comp.insertCompletedSurvey(user.getId(), QuizController.getController().getCurrentQuiz().getId());
+					MainView main = new MainView();
+					setVisible(false);
+					main.setVisible(true);
+				}
+
+			}
+
 		});
 
 	}

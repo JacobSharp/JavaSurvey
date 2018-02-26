@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import model.CompletedSurvey;
+
 public class CompletedSurveyJDBCDao implements CompletedSurveyDao {
 
 	public void insertCompletedSurvey(int user_id, int survey_id) {
@@ -13,7 +15,6 @@ public class CompletedSurveyJDBCDao implements CompletedSurveyDao {
 		Connection con = ConnectionFactory.getInstance().getConnection();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-
 
 		try {
 			ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -39,7 +40,39 @@ public class CompletedSurveyJDBCDao implements CompletedSurveyDao {
 			}
 		}
 
+	}
 
+	public void findAllCompletedSurveys(int user_id) {
+		String sql = "select * from javasurveys.completedsurvey where user_id = ?";
+		Connection con = ConnectionFactory.getInstance().getConnection();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, user_id);
+			rs = ps.executeQuery();
+
+			while (rs.next()) {
+				CompletedSurvey comp = new CompletedSurvey();
+				comp.setUser_id(rs.getInt("user_id"));
+				comp.setSurvey_id(rs.getInt("survey_id"));
+
+			}
+		} catch (SQLException e) {
+			throw new RuntimeException("Error", e);
+		} finally {
+			try {
+				if (ps != null) {
+					ps.close();
+				}
+				if (rs != null) {
+					rs.close();
+				}
+			} catch (SQLException e) {
+				throw new RuntimeException("We are sorry. A technical error occurred. Please try again later.", e);
+			}
+		}
+		// TODO return completed surveys for checking
 	}
 
 }

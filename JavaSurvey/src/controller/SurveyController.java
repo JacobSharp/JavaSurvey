@@ -24,7 +24,7 @@ public class SurveyController {
 	public void setCurrentSurvey(Survey survey) {
 		this.currentSurvey = surveyDao.findAllSurveyQuestions(survey);
 	}
-	
+
 	public String getNextQuestion() {
 		if (this.currentSurvey.getFragen().size() > currentSurveyQuestion) {
 			return this.currentSurvey.getFragen().get(currentSurveyQuestion++);
@@ -35,5 +35,5 @@ public class SurveyController {
 	public Survey getCurrentSurvey() {
 		return currentSurvey;
 	}
-	
+
 }

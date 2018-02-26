@@ -10,7 +10,7 @@ public class Survey {
 	private int user_id;
 	private boolean isQuiz;
 	private List<String> fragen;
-	
+
 	public Survey() {
 		this.fragen = new ArrayList<>();
 	}
