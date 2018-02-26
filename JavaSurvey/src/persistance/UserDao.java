@@ -11,5 +11,7 @@ public interface UserDao {
 	public abstract ColorType findUserBackgroundColor(String username);
 	
 	public void updateUserBackgroundColor(User user);
+	
+	public void updateUserPoints(User user);
 
 }

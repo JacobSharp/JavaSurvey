@@ -158,4 +158,33 @@ public class UserJDBCDao implements UserDao {
 		}
 		
 	}
+
+	@Override
+	public void updateUserPoints(User user) {
+		String sql = "UPDATE user SET spielpünkte = ? WHERE id = ?";
+		Connection con = ConnectionFactory.getInstance().getConnection();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, user.getSpielpunkte());
+			ps.setInt(2, user.getId());
+			rs = ps.executeQuery();
+
+		} catch (SQLException e) {
+			throw new RuntimeException("Error occurred while executing your process", e);
+		} finally {
+			try {
+				if (ps != null) {
+					ps.close();
+				}
+				if (rs != null) {
+					rs.close();
+				}
+			} catch (SQLException e) {
+				throw new RuntimeException("We are sorry. A technical error occurred. Please try again later.", e);
+			}
+		}
+	}
 }
