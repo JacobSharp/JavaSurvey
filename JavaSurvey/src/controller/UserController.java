@@ -51,8 +51,7 @@ public class UserController {
 		return userBackgroundColor;
 	}
 
-	public void changeUserBackgroundColor(Color color) { // TODO Color zum ColorType konvertieren (via ColorType
-															// manuelle helper-Klasse)
+	public void changeUserBackgroundColor(Color color) { 
 		user.setLookAndFeel(ColorType.convertColorToColorType(color));
 		userDao.updateUserBackgroundColor(user);
 

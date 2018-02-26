@@ -72,7 +72,6 @@ public class CompletedSurveyJDBCDao implements CompletedSurveyDao {
 				throw new RuntimeException("We are sorry. A technical error occurred. Please try again later.", e);
 			}
 		}
-		// TODO return completed surveys for checking
 	}
 
 }

@@ -16,11 +16,7 @@ import model.User;
 import persistance.CompletedSurveyJDBCDao;
 
 public class SurveyView extends JDialog {
-
-	/**
-	 * ehemalige Name: A4
-	 */
-
+	
 	private static final long serialVersionUID = 120428732984733599L;
 	private JLabel text = new JLabel("Beispiel Text");
 	private JPanel buttonPanel = new JPanel(new GridLayout(0, 2));
