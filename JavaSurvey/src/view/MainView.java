@@ -13,6 +13,7 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import controller.SurveyController;
 import controller.UserController;
 import model.Quiz;
 import model.Survey;
@@ -50,6 +51,7 @@ public class MainView extends JDialog {
 	private JButton ers = new JButton("Erstellen");
 	private JButton laf = new JButton("LookAndFeel");
 	private User user = UserController.getController().getUser();
+	private SurveyController SURVEY_CONTROLLER = SurveyController.getController();
 
 	private void subtractUserPoints() {
 		user.setSpielpunkte(user.getSpielpunkte() - 1);
@@ -211,8 +213,11 @@ public class MainView extends JDialog {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
-				SurveyView survey = new SurveyView();
+				SURVEY_CONTROLLER.setCurrentSurvey(surveyList.get(0));
+				String question = SURVEY_CONTROLLER.getNextQuestion();
+				SurveyView survey = new SurveyView(question);
+				setVisible(false);
+				survey.setVisible(true);
 
 			}
 

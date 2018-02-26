@@ -1,11 +1,19 @@
 package view;
 
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import model.User;
-import javax.swing.*;
+
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+import controller.SurveyController;
 import controller.UserController;
+import model.User;
+import persistance.CompletedSurveyJDBCDao;
 
 public class SurveyView extends JDialog {
 
@@ -19,15 +27,17 @@ public class SurveyView extends JDialog {
 	private JButton ja = new JButton("Ja");
 	private JButton nein = new JButton("Nein");
 	private User user = UserController.getController().getUser();
+	private SurveyController SURVEY_CONTROLLER = SurveyController.getController();
 
 	private void addUserPoints() {
 		user.setSpielpunkte(user.getSpielpunkte() + 1);
 	}
 
-	public SurveyView() {
+	public SurveyView(String question) {
 
 		setLayout(new BorderLayout());
 		text.setHorizontalAlignment(JLabel.CENTER);
+		text.setText(question);
 		add(text, BorderLayout.NORTH);
 		buttonPanel.add(ja);
 		buttonPanel.add(nein);
@@ -40,9 +50,21 @@ public class SurveyView extends JDialog {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				SurveyView ja = new SurveyView();
-				ja.setVisible(true);
-				setVisible(false);
+				String question = SURVEY_CONTROLLER.getNextQuestion();
+
+				if (question != null) {
+					SurveyView ja = new SurveyView(question);
+					ja.setVisible(true);
+					setVisible(false);
+				} else {
+					addUserPoints();
+					CompletedSurveyJDBCDao comp = new CompletedSurveyJDBCDao();
+					comp.insertCompletedSurvey(user.getId(),
+							SurveyController.getController().getCurrentSurvey().getId());
+					MainView main = new MainView();
+					setVisible(false);
+					main.setVisible(true);
+				}
 
 			}
 		});
@@ -52,20 +74,24 @@ public class SurveyView extends JDialog {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				SurveyView nein = new SurveyView();
-				nein.setVisible(true);
-				setVisible(false);
+				String question = SURVEY_CONTROLLER.getNextQuestion();
+
+				if (question != null) {
+					SurveyView nein = new SurveyView(question);
+					nein.setVisible(true);
+					setVisible(false);
+				} else {
+					addUserPoints();
+					CompletedSurveyJDBCDao comp = new CompletedSurveyJDBCDao();
+					comp.insertCompletedSurvey(user.getId(),
+							SurveyController.getController().getCurrentSurvey().getId());
+					MainView main = new MainView();
+					setVisible(false);
+					main.setVisible(true);
+				}
 
 			}
 		});
 
 	}
-
-	public static void main(String[] args) {
-
-		SurveyView launcher = new SurveyView();
-		launcher.setVisible(true);
-
-	}
-
 }

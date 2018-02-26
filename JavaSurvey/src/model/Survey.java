@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Survey {
@@ -9,6 +10,10 @@ public class Survey {
 	private int user_id;
 	private boolean isQuiz;
 	private List<String> fragen;
+	
+	public Survey() {
+		this.fragen = new ArrayList<>();
+	}
 
 	public String getSurveyTitle() {
 		return surveyTitle;
