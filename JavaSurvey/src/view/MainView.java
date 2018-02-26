@@ -5,12 +5,16 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
+import persistance.SurveyJDBCDao;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import model.Survey;
 
 public class MainView extends JDialog {
 
@@ -131,6 +135,9 @@ public class MainView extends JDialog {
 	public static void main(String[] args) {
 
 		MainView launcher = new MainView();
+		SurveyJDBCDao surveyTest = new SurveyJDBCDao();
+		List<Survey> surveyList = surveyTest.findAllSurveys();
+		
 		launcher.setVisible(true);
 
 	}
