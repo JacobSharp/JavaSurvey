@@ -7,14 +7,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
-import persistance.SurveyJDBCDao;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import model.Quiz;
 import model.Survey;
+import persistance.SurveyJDBCDao;
 
 public class MainView extends JDialog {
 
@@ -51,11 +52,69 @@ public class MainView extends JDialog {
 		setSize(400, 400);
 		setLayout(new BorderLayout());
 
+		SurveyJDBCDao surveyImport = new SurveyJDBCDao();
+		List<Survey> surveyList = surveyImport.findAllSurveys();
+		List<Quiz> quizList = surveyImport.findAllQuizzes();
+		setS1Text(surveyList.get(0).getSurveyTitle());
+		int surveyCount = surveyList.size();
+		int quizCount = quizList.size();
+
+		try {
+			if (surveyList.get(0) != null) {
+				setS1Text(surveyList.get(0).getSurveyTitle());
+			}
+		} catch (IndexOutOfBoundsException e) {
+
+		}
+		try {
+			if (surveyList.get(1) != null) {
+				setS2Text(surveyList.get(1).getSurveyTitle());
+			}
+		} catch (IndexOutOfBoundsException e) {
+
+		}
+		try {
+			if (surveyList.get(2) != null) {
+				setS3Text(surveyList.get(2).getSurveyTitle());
+			}
+		} catch (IndexOutOfBoundsException e) {
+
+		}
+
+		try {
+			if (quizList.get(0) != null) {
+				setQ1Text(quizList.get(0).getSurveyTitle());
+			}
+		} catch (IndexOutOfBoundsException e) {
+
+		}
+
+		try {
+			if (quizList.get(1) != null) {
+				setQ2Text(quizList.get(1).getSurveyTitle());
+			}
+		} catch (IndexOutOfBoundsException e) {
+
+		}
+		try {
+			if (quizList.get(2) != null) {
+				setQ3Text(quizList.get(2).getSurveyTitle());
+			}
+		} catch (IndexOutOfBoundsException e) {
+
+		}
+
 		northPanel.setLayout(new BoxLayout(northPanel, BoxLayout.Y_AXIS));
 		surveyTitlePanel.add(surveyTitle);
-		s1ButtonPanel.add(s1);
-		s2ButtonPanel.add(s2);
-		s3ButtonPanel.add(s3);
+		if (surveyCount >= 1) {
+			s1ButtonPanel.add(s1);
+		}
+		if (surveyCount >= 2) {
+			s2ButtonPanel.add(s2);
+		}
+		if (surveyCount >= 3) {
+			s3ButtonPanel.add(s3);
+		}
 		northButtonPanel.add(s1ButtonPanel);
 		northButtonPanel.add(s2ButtonPanel);
 		northButtonPanel.add(s3ButtonPanel);
@@ -65,22 +124,27 @@ public class MainView extends JDialog {
 
 		centerPanel.setLayout(new BoxLayout(centerPanel, BoxLayout.Y_AXIS));
 		quizTitlePanel.add(quizTitle);
-		q1ButtonPanel.add(q1);
-		q2ButtonPanel.add(q2);
-		q3ButtonPanel.add(q3);
+		if (quizCount >= 1) {
+			q1ButtonPanel.add(q1);
+		}
+		if (quizCount >= 2) {
+			q2ButtonPanel.add(q2);
+		}
+		if (quizCount >= 3) {
+			q3ButtonPanel.add(q3);
+		}
 		centerButtonPanel.add(q1ButtonPanel);
 		centerButtonPanel.add(q2ButtonPanel);
 		centerButtonPanel.add(q3ButtonPanel);
 		centerPanel.add(quizTitlePanel);
 		centerPanel.add(centerButtonPanel);
 		add(centerPanel, BorderLayout.CENTER);
-		
+
 		southPanel.setLayout(new BoxLayout(southPanel, BoxLayout.X_AXIS));
 		southPanel.add(pro);
 		southPanel.add(laf);
 		southPanel.add(ers);
 		add(southPanel, BorderLayout.SOUTH);
-
 
 		pro.addActionListener(new ActionListener() {
 
@@ -129,31 +193,48 @@ public class MainView extends JDialog {
 
 			}
 		});
-		
+
 		s1.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+
 				SurveyView survey = new SurveyView();
-				
-				
+
 			}
-			
-			
+
 		});
-		
+
 	}
 
 	public void setS1Text(String text) {
 		this.s1.setText(text);
 	}
 
+	public void setS2Text(String text) {
+		this.s2.setText(text);
+	}
+
+	public void setS3Text(String text) {
+		this.s3.setText(text);
+	}
+
+	public void setQ1Text(String text) {
+		this.q1.setText(text);
+	}
+
+	public void setQ2Text(String text) {
+		this.q2.setText(text);
+	}
+
+	public void setQ3Text(String text) {
+		this.q3.setText(text);
+	}
+
 	public static void main(String[] args) {
 
 		MainView launcher = new MainView();
-		
-		
+
 		launcher.setVisible(true);
 
 	}

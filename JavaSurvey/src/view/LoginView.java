@@ -1,19 +1,20 @@
 package view;
 
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
 
-import javax.swing.*;
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 
 import controller.UserController;
-import model.Survey;
 import model.User;
-import persistance.SurveyJDBCDao;
 
-public class LoginView extends JDialog {                                                                          
-
+public class LoginView extends JDialog {
 
 	private static final long serialVersionUID = 120428732984733599L;
 	private JTextField username = new JTextField("Username", 20);
@@ -26,20 +27,20 @@ public class LoginView extends JDialog {
 	public void setLoginSuccess(boolean i) {
 		this.loginSuccess = i;
 	}
-	
+
 	public LoginView() {
 
 		setLayout(new BorderLayout());
 		add(username, BorderLayout.NORTH);
 		add(pass, BorderLayout.CENTER);
-		
+
 		buttonPanel.add(login);
 		buttonPanel.add(regist);
 		add(buttonPanel, BorderLayout.SOUTH);
 		setSize(230, 100);
-		
+
 		regist.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				User user = new User();
@@ -50,24 +51,23 @@ public class LoginView extends JDialog {
 				UserController.getController().addUser(user);
 			}
 		});
-		
+
 		login.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				boolean loginSuccessful = UserController.getController().verifyLogin(username.getText(), new String(pass.getPassword()));
+				boolean loginSuccessful = UserController.getController().verifyLogin(username.getText(),
+						new String(pass.getPassword()));
 				setLoginSuccess(loginSuccessful);
 				System.out.println("login successful? " + loginSuccess);
 				if (loginSuccess == true) {
 					MainView main = new MainView();
-					
+
 					main.setVisible(true);
-					SurveyJDBCDao surveyTest = new SurveyJDBCDao();
-					List<Survey> surveyList = surveyTest.findAllSurveys();
-					main.setS1Text(surveyList.get(0).getSurveyTitle());
+
 					setVisible(false);
 				}
-				
+
 			}
 		});
 
