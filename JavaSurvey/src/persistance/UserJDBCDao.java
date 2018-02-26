@@ -67,7 +67,7 @@ public class UserJDBCDao implements UserDao {
 				user = new User();
 				user.setId(rs.getInt("id"));
 				System.out.println("User color: " + rs.getString("lookAndFeel"));
-				user.setLookAndFeel(ColorType.valueOf(rs.getString("lookAndFeel").toUpperCase()));
+				 user.setLookAndFeel(ColorType.valueOf(rs.getString("lookAndFeel").toUpperCase()));
 				user.setPassword(rs.getString("password"));
 				user.setSpielpunkte(rs.getInt("spielpunkte"));
 				user.setUsername(rs.getString("username"));

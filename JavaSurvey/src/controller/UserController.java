@@ -12,7 +12,7 @@ public class UserController {
 	// singleton
 	private static final UserController CONTROLLER = new UserController();
 	private ColorType userBackgroundColor = null;
-	private User user = new User();
+	private User user = null;
 
 	private UserController() {
 	}
@@ -29,17 +29,16 @@ public class UserController {
 	}
 
 	public boolean verifyLogin(String username, String password) {
-		User user = userDao.findUserByUsername(username);
+		setUser(userDao.findUserByUsername(username));
 
-		if (user != null && user.getPassword().equals(password)) {
-			this.user = user;
+		if (getUser() != null && getUser().getPassword().equals(password)) {
 			getUserBackgroundColor();
 			return true;
 		} else {
 			return false;
 		}
 	}
-	
+
 	public ColorType getUserBackgroundColor() {
 		if (userBackgroundColor == null) {
 			ColorType tempUserBackgroundColor = userDao.findUserBackgroundColor(user.getUsername());
@@ -52,10 +51,18 @@ public class UserController {
 		return userBackgroundColor;
 	}
 
-	public void changeUserBackgroundColor(Color color) { // TODO Color zum ColorType konvertieren (via ColorType manuelle helper-Klasse)
-		user.setLookAndFeel(color);
+	public void changeUserBackgroundColor(Color color) { // TODO Color zum ColorType konvertieren (via ColorType
+															// manuelle helper-Klasse)
+//		user.setLookAndFeel(color);
 		userDao.updateUserBackgroundColor(user);
-		
-		
+
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 }

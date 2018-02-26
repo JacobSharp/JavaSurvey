@@ -42,7 +42,7 @@ public class LookAndFeel extends JDialog {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Color color = ((ColorType)colorComboBox.getSelectedItem()).getColor();
-//				getContentPane().setBackground(UserController.getController().getUserBackgroundColor().getColor());
+				getContentPane().setBackground(UserController.getController().getUserBackgroundColor().getColor());
 				eingaben.setBackground(color);
 				//TODO: Write changes color to DB HERE
 				UserController.getController().changeUserBackgroundColor(color);

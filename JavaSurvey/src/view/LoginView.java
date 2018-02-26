@@ -57,6 +57,7 @@ public class LoginView extends JDialog {
 				System.out.println("login successful? " + loginSuccess);
 				if (loginSuccess == true) {
 					MainView main = new MainView();
+					
 					main.setVisible(true);
 					setVisible(false);
 				}
