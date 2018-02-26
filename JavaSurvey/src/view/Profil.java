@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import controller.UserController;
+import model.User;
 
 public class Profil extends JDialog {
 
@@ -31,12 +32,17 @@ public class Profil extends JDialog {
 	private JButton back = new JButton("Zurück");
 	private JTextField leer = new JTextField();
 	private JPanel header = new JPanel();
+	private User user = UserController.getController().getUser();
 
 	public Profil() {
-
-		userIdData.setText(String.valueOf(UserController.getController().getUser().getId()));
-		userNameData.setText(UserController.getController().getUser().getUsername());
-		spielPunkteData.setText(String.valueOf(UserController.getController().getUser().getSpielpunkte()));
+		
+		if (user != null) {
+			userIdData.setText(String.valueOf(user.getId()));
+			userNameData.setText(user.getUsername());
+			spielPunkteData.setText(String.valueOf(user.getSpielpunkte()));
+		} else {
+			System.err.println("User not loaded by UserController.");
+		}
 
 		userData.add(userId);
 		userData.add(userIdData);
