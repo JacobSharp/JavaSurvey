@@ -1,12 +1,14 @@
 package model;
 
+import java.util.List;
+
 public class Survey {
 
 	private String surveyTitle;
 	private int id;
 	private int user_id;
 	private boolean isQuiz;
-	private String fragen[];
+	private List<String> fragen;
 
 	public String getSurveyTitle() {
 		return surveyTitle;
@@ -40,12 +42,12 @@ public class Survey {
 		this.isQuiz = isQuiz;
 	}
 
-	public String[] getFragen() {
+	public List<String> getFragen() {
 		return fragen;
 	}
 
-	public void setFragen(String fragen[]) {
-		this.fragen = fragen;
+	public void addFrage(String frage) {
+		this.fragen.add(frage);
 	}
 
 }

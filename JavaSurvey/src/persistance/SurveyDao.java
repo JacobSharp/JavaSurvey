@@ -11,6 +11,6 @@ public interface SurveyDao {
 
 	public abstract List<Quiz> findAllQuizzes();
 
-	public abstract List<Survey> findAllQuestions();
+	public Survey findAllSurveyQuestions(Survey survey);
 
 }

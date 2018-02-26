@@ -104,7 +104,6 @@ public class UserJDBCDao implements UserDao {
 
 			while (rs.next()) {
 				String tempUserBackgroundColor = rs.getString("lookAndFeel").toUpperCase();
-				System.out.println("BackgroundColor of user \"" + username + "\" is " + tempUserBackgroundColor);
 				if (tempUserBackgroundColor != null) {
 					userBackgroundColor = ColorType.valueOf(tempUserBackgroundColor);
 				}
