@@ -129,14 +129,30 @@ public class MainView extends JDialog {
 
 			}
 		});
+		
+		s1.addActionListener(new ActionListener() {
 
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				SurveyView survey = new SurveyView();
+				
+				
+			}
+			
+			
+		});
+		
+	}
+
+	public void setS1Text(String text) {
+		this.s1.setText(text);
 	}
 
 	public static void main(String[] args) {
 
 		MainView launcher = new MainView();
-		SurveyJDBCDao surveyTest = new SurveyJDBCDao();
-		List<Survey> surveyList = surveyTest.findAllSurveys();
+		
 		
 		launcher.setVisible(true);
 

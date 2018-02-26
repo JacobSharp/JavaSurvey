@@ -56,7 +56,7 @@ public class SurveyJDBCDao implements SurveyDao {
 
 		try {
 			ps = con.prepareStatement(sql);
-			ps.setInt(1, );
+			//ps.setInt(1, );
 			rs = ps.executeQuery();
 
 			while (rs.next()) {

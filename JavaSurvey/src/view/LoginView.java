@@ -3,11 +3,14 @@ package view;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.*;
 
 import controller.UserController;
+import model.Survey;
 import model.User;
+import persistance.SurveyJDBCDao;
 
 public class LoginView extends JDialog {                                                                          
 
@@ -59,6 +62,9 @@ public class LoginView extends JDialog {
 					MainView main = new MainView();
 					
 					main.setVisible(true);
+					SurveyJDBCDao surveyTest = new SurveyJDBCDao();
+					List<Survey> surveyList = surveyTest.findAllSurveys();
+					main.setS1Text(surveyList.get(0).getSurveyTitle());
 					setVisible(false);
 				}
 				
@@ -70,6 +76,7 @@ public class LoginView extends JDialog {
 	public static void main(String[] args) {
 
 		LoginView launcher = new LoginView();
+
 		launcher.setVisible(true);
 
 	}
